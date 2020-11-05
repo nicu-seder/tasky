@@ -1,14 +1,21 @@
-import './App.css';
+import React from 'react';
+
+//import routing
+import {Switch, Route} from "react-router-dom";
 
 //import components
 import Header from "./components/header/header.component";
+import SigninPage from "./pages/signin/signin.component";
 
-function App() {
+const  App = ()=> {
   return (
-    <div className="App">
+    <div>
       <Header/>
+      <Switch>
+          <Route path={'/signin'} component={SigninPage}/>
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;

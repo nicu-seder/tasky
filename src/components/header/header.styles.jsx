@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {ReactComponent as Logo} from "../../asstets/tasky_logo.svg";
+import {ReactComponent as Logo} from "../../assets/tasky_logo.svg";
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -25,4 +25,38 @@ export const HeaderTitle = styled.div`
   color: #333333;
   font-size: 18px;
 `;
+
+export const HeaderAuthentication = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const HeaderLogin = styled.div`
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-decoration: none;
+  color: #333333;
+  font-size: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+export const HeaderSignup = styled.div`
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-decoration: none;
+  color: #333333;
+  font-size: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+export const HeaderSignout = styled.div`
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-decoration: none;
+  color: #333333;
+  font-size: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
 
