@@ -28,3 +28,31 @@ export  const signInWithGoogle = async()=>{
         console.log(e);
     }
 };
+
+export const createUserProfileDocument = async (userAuth, additionalData)=>{
+    if(!userAuth)
+        return;
+    const userDocRef = firestore.doc(`users/${userAuth.uid}`);
+    const userDocSnapshot = await userDocRef.get();
+    if(!userDocSnapshot.exists){
+        const {displayName, email} = userAuth;
+        const createdAt = new Date();
+        try{
+            await userDocRef.set({displayName,  email, createdAt, ...additionalData});
+        }catch (e) {
+            console.log('Error creating user', e.message);
+        }
+    }
+    return userDocRef;
+};
+
+export const getCurrentUser = ()=>{
+    return new Promise((resolve, reject)=>{
+        const unsubscribe = auth.onAuthStateChanged(userAuth=>{
+            unsubscribe();
+            resolve(userAuth);
+        }, reject)
+    })
+};
+
+export default firestore;
