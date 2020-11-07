@@ -7,7 +7,7 @@ import {googleProvider, auth, createUserProfileDocument, getCurrentUser} from ".
 import UserActionTypes from "./user.types";
 
 //import actions
-import {googleSigninSuccess, googleSigninFailure} from "./user.actions";
+import {googleSigninSuccess, googleSigninFailure, signOutFailure, signOutSuccess} from "./user.actions";
 
 export function* getSnapshotFromUser(userAuth, additionalData){
     try{
@@ -50,8 +50,24 @@ export  function* onCheckUserSession(){
     yield takeLatest(UserActionTypes.CHECK_USER_SESSION, isUserAuthenticated)
 }
 
+export function* signOut(){
+    try{
+        yield auth.signOut;
+        yield put(signOutSuccess())
+    }catch (e) {
+        yield put(signOutFailure(e))
+    }
+}
+
+export function* onSignoutStart(){
+    yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut)
+}
+
 export function* userSagas(){
     yield all(
-        [call(onGoogleSigninStart)]
+        [call(onGoogleSigninStart),
+                call(onCheckUserSession),
+                call(onSignoutStart)
+        ]
     )
 }

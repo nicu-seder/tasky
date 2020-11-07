@@ -7,16 +7,25 @@ import {HeaderContainer, AppLogo, HeaderTitle, HeaderDetails, HeaderAuthenticati
 import {useHistory} from 'react-router-dom';
 
 //import redux
-import  {useSelector} from "react-redux";
+import  {useSelector, useDispatch} from "react-redux";
 
 //import selectors
 import {selectCurrentUser} from "../../redux/user/user.selectors";
 
+//import  actions
+import {signOutStart} from "../../redux/user/user.actions";
+
 const Header = ()=>{
+    const disptach = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(selectCurrentUser);
+
     const goToSigninPage = ()=>{
         history.push('/signin')
+    };
+
+    const signOut = ()=>{
+        disptach(signOutStart())
     };
 
     return (
@@ -27,10 +36,11 @@ const Header = ()=>{
             </HeaderDetails>
             <HeaderAuthentication>
                 {
-                    currentUser? <HeaderSignout>Signout</HeaderSignout> :
+                    currentUser?
+                        <HeaderSignout onClick={signOut}>Sign Out</HeaderSignout> :
                         <Fragment>
-                            <HeaderLogin onClick={goToSigninPage}>Login</HeaderLogin>
-                            <HeaderSignup>Signup</HeaderSignup>
+                            <HeaderLogin onClick={goToSigninPage}>Sign In</HeaderLogin>
+                            <HeaderSignup>Sign Up</HeaderSignup>
                         </Fragment>
 
 
