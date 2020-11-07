@@ -24,6 +24,10 @@ const Header = ()=>{
         history.push('/signin')
     };
 
+    const goToMainPage = ()=>{
+        history.push('/');
+    };
+
     const signOut = ()=>{
         disptach(signOutStart())
     };
@@ -31,7 +35,7 @@ const Header = ()=>{
     return (
         <HeaderContainer>
             <HeaderDetails>
-                <AppLogo/>
+                <AppLogo onClick={goToMainPage}/>
                 <HeaderTitle>Tasky</HeaderTitle>
             </HeaderDetails>
             <HeaderAuthentication>

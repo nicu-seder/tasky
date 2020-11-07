@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 //import styles
-import {SigninFormContainer, ButtonsContainer} from "./signin-form.styles";
+import {SigninFormContainer, ButtonsContainer, SignInTitle, SignInSubtitle} from "./signin-form.styles";
 
 //import components
 import FormInput from "../form-input/form-input.component";
@@ -35,8 +35,8 @@ const SigninForm = ()=>{
 
     return (
         <SigninFormContainer>
-            <h2>I already have an account</h2>
-            <span>Sign in with your email and password</span>
+            <SignInTitle>I already have an account</SignInTitle>
+            <SignInSubtitle>Sign in with your email and password</SignInSubtitle>
             <form onSubmit={handleSubmit}>
                 <FormInput
                     name={'email'}

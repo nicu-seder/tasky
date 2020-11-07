@@ -17,6 +17,7 @@ export const AppLogo = styled(Logo)`
   width: 35px;
   height: 35px;
   margin: 10px;
+  cursor: pointer;
 `;
 
 export const HeaderTitle = styled.div`
@@ -33,30 +34,45 @@ export const HeaderAuthentication = styled.div`
 `;
 
 export const HeaderLogin = styled.div`
+  height: 25px;
+  width: 75px;
   font-family: 'Open Sans Condensed', sans-serif;
   text-decoration: none;
-  color: #333333;
-  font-size: 15px;
+  color: white;
+  font-size: 17px;
   margin-right: 10px;
   cursor: pointer;
+  background-color: #FDC027;
+  text-align: center;
+  border-radius: 15px;
 `;
 
 export const HeaderSignup = styled.div`
+  height: 25px;
+  width: 75px;
   font-family: 'Open Sans Condensed', sans-serif;
   text-decoration: none;
-  color: #333333;
-  font-size: 15px;
+  color: white;
+  font-size: 17px;
   margin-right: 10px;
   cursor: pointer;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #333333;
 `;
 
 export const HeaderSignout = styled.div`
+  height: 25px;
+  width: 75px;
   font-family: 'Open Sans Condensed', sans-serif;
   text-decoration: none;
-  color: #333333;
-  font-size: 15px;
+  color: white;
+  font-size: 17px;
   margin-right: 10px;
   cursor: pointer;
+  background-color: #4B3D84;
+  text-align: center;
+  border-radius: 15px;
 `;
 
 
