@@ -24,6 +24,10 @@ const Header = ()=>{
         history.push('/signin')
     };
 
+    const goToSignupPage = ()=>{
+        history.push('/signup');
+    };
+
     const goToMainPage = ()=>{
         history.push('/');
     };
@@ -44,15 +48,12 @@ const Header = ()=>{
                         <HeaderSignout onClick={signOut}>Sign Out</HeaderSignout> :
                         <Fragment>
                             <HeaderLogin onClick={goToSigninPage}>Sign In</HeaderLogin>
-                            <HeaderSignup>Sign Up</HeaderSignup>
+                            <HeaderSignup onClick={goToSignupPage}>Sign Up</HeaderSignup>
                         </Fragment>
 
 
                 }
-
-
             </HeaderAuthentication>
-
         </HeaderContainer>
     )
 };

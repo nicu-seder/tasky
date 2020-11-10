@@ -6,6 +6,7 @@ import {Switch, Route,Redirect} from "react-router-dom";
 //import components
 import Header from "./components/header/header.component";
 import SigninPage from "./pages/signin/signin.component";
+import SignupPage from "./pages/signup/signup.component";
 import WelcomePage from "./pages/welcome/welcome.component";
 
 //import redux
@@ -30,6 +31,7 @@ const  App = ()=> {
       <Header/>
       <Switch>
           <Route path={'/signin'} render={()=>currentUser?<Redirect to={'/'}/>:<SigninPage/>}/>
+          <Route path={'/signup'} render={()=>currentUser?<Redirect to={'/'}/>:<SignupPage/>}/>
           <Route path={'/'} component={WelcomePage}/>
       </Switch>
     </div>

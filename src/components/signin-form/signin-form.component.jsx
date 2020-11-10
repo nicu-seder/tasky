@@ -11,7 +11,7 @@ import CustomButton from "../custom-button/custom-button.component";
 import {useDispatch} from "react-redux";
 
 //import actions
-import {googleSigninStart} from "../../redux/user/user.actions";
+import {googleSigninStart, emailSignInStart} from "../../redux/user/user.actions";
 
 
 const SigninForm = ()=>{
@@ -21,16 +21,21 @@ const SigninForm = ()=>{
     const handleChange = (event)=>{
         const {value,  name} = event.target;
         setUserCredentials({...userCredentials, [name]:value});
-        console.log(value);
     };
 
-    const handleSubmit = (event)=>{
+    const handleSubmit = async (event)=>{
         event.preventDefault();
+        startEmailSignin();
     };
 
     const dispatch = useDispatch();
+
     const startGoogleSignin = ()=>{
         dispatch(googleSigninStart())
+    };
+
+    const startEmailSignin = ()=>{
+        dispatch(emailSignInStart({email, password}));
     };
 
     return (
