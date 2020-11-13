@@ -1,16 +1,20 @@
 import React from 'react';
 
 //import  styles
-import {TaskGroupContainer, TaskGroupVerticalDivider} from "./task-group.styles";
+import {TaskGroupContainer, TaskGroupInfoContainer} from "./task-group.styles";
 
 //import components
 import TaskDate from "../task-date/task-date.component";
+import TaskItem from "../task-item/task-item.component";
 
 const TaskGroup = ()=>{
     return (
         <TaskGroupContainer>
             <TaskDate/>
-            <TaskGroupVerticalDivider/>
+            <TaskGroupInfoContainer>
+                <TaskItem/>
+                <TaskItem/>
+            </TaskGroupInfoContainer>
         </TaskGroupContainer>
     )
 };

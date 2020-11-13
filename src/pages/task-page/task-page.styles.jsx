@@ -7,4 +7,6 @@ export const TaskPageContainer = styled.div`
   height: 100%;
   margin-top: 25px;
   padding: 20px;
+  justify-content: center;
+  align-items: start;
 `;

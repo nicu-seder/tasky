@@ -12,12 +12,13 @@ export const TaskDateMonth = styled.div`
   color: grey;
   font-size: 18px;
   margin-left: 10px;
+  font-family: 'Open Sans Condensed', sans-serif;
 `;
 
 export const TaskDateDay = styled.div`
   display: flex;
   color: grey;
   font-size: 40px;
-  
+  font-family: 'Open Sans Condensed', sans-serif;
 `;
 

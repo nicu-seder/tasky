@@ -29,7 +29,7 @@ const Header = ()=>{
     };
 
     const goToMainPage = ()=>{
-        history.push('/');
+        currentUser?history.push('/tasks'): history.push('/');
     };
 
     const signOut = ()=>{

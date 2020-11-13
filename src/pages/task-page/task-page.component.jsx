@@ -11,6 +11,7 @@ const TasksPage = ()=>{
     return (
         <TaskPageContainer>
             <TaskGroup/>
+            <TaskGroup/>
         </TaskPageContainer>
     )
 };
