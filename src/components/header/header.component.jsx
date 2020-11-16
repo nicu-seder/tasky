@@ -16,7 +16,7 @@ import {selectCurrentUser} from "../../redux/user/user.selectors";
 import {signOutStart} from "../../redux/user/user.actions";
 
 const Header = ()=>{
-    const disptach = useDispatch();
+    const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(selectCurrentUser);
 
@@ -29,11 +29,12 @@ const Header = ()=>{
     };
 
     const goToMainPage = ()=>{
-        currentUser?history.push('/tasks'): history.push('/');
+        currentUser?history.push('/task'): history.push('/');
     };
 
     const signOut = ()=>{
-        disptach(signOutStart())
+        dispatch(signOutStart());
+        history.push('/');
     };
 
     return (

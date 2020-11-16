@@ -31,10 +31,12 @@ const  App = ()=> {
     <div>
       <Header/>
       <Switch>
-          <Route path={'/signin'} render={()=>currentUser?<Redirect to={'/tasks'}/>:<SigninPage/>}/>
-          <Route path={'/signup'} render={()=>currentUser?<Redirect to={'/tasks'}/>:<SignupPage/>}/>
-          <Route path={'/tasks'} component={TasksPage}/>
-          <Route path={'/'} component={WelcomePage}/>
+          {
+              currentUser?<Route path={'/task'} component={TasksPage}/>:
+                  <Route exact path={'/'} component={WelcomePage}/>
+          }
+          <Route path={'/signin'} render={()=>currentUser?<Redirect to={'/task'}/>:<SigninPage/>}/>
+          <Route path={'/signup'} render={()=>currentUser?<Redirect to={'/task'}/>:<SignupPage/>}/>
 
       </Switch>
     </div>

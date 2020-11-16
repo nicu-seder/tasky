@@ -6,6 +6,7 @@ export const FormInputContainer = styled.div`
   justify-content: center;
   align-items: start;
   margin-top: 10px;
+  margin-right: 20px;
 `;
 
 export const FormInputText = styled.input`

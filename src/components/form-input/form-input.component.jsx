@@ -3,11 +3,11 @@ import React from 'react';
 //import styles
 import {FormInputContainer, FormInputText, FormInputLabel} from "./form-input.styles";
 
-const FormInput = ({label, handleChange, ...otherProps})=>{
+const FormInput = ({label,placeholder, handleChange, ...otherProps})=>{
     return (
         <FormInputContainer>
             <FormInputLabel>{label}</FormInputLabel>
-            <FormInputText  onChange={handleChange} {...otherProps}/>
+            <FormInputText  onChange={handleChange} {...otherProps} placeholder={placeholder}/>
         </FormInputContainer>
     )
 };

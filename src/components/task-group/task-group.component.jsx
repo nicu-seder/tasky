@@ -7,13 +7,16 @@ import {TaskGroupContainer, TaskGroupInfoContainer} from "./task-group.styles";
 import TaskDate from "../task-date/task-date.component";
 import TaskItem from "../task-item/task-item.component";
 
-const TaskGroup = ()=>{
+const TaskGroup = ({date, items})=>{
     return (
         <TaskGroupContainer>
-            <TaskDate/>
+            <TaskDate date={date}/>
             <TaskGroupInfoContainer>
-                <TaskItem/>
-                <TaskItem/>
+                {
+                    items.map(item=>{
+                        return <TaskItem key={item.taskName} item={item}/>
+                    })
+                }
             </TaskGroupInfoContainer>
         </TaskGroupContainer>
     )

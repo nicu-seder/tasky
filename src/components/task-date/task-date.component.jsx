@@ -3,11 +3,17 @@ import React from 'react';
 //import styles
 import {TaskDateContainer, TaskDateMonth, TaskDateDay} from "./task-date.styles";
 
-const TaskDate = ()=>{
+//import from toolbox
+import {monthMatching} from "../../tool-box/tool-box";
+
+const TaskDate = ({date})=>{
+    const  dateSplit = date.split('-');
+    const month = dateSplit[1];
+    const day = dateSplit[0];
     return (
         <TaskDateContainer>
-            <TaskDateMonth>Jun</TaskDateMonth>
-            <TaskDateDay>23</TaskDateDay>
+            <TaskDateMonth>{monthMatching[month]}</TaskDateMonth>
+            <TaskDateDay>{day}</TaskDateDay>
         </TaskDateContainer>
     )
 };

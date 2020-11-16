@@ -46,6 +46,24 @@ export const createUserProfileDocument = async (userAuth, additionalData)=>{
     return userDocRef;
 };
 
+export const createTask = async (userAuth, taskInfo)=>{
+    if(!userAuth)
+        return;
+    const {taskName, taskDate, taskDetails, taskLocation} = taskInfo;
+    const taskDocRef = firestore.doc(`tasks/${userAuth.id}/items/${taskName}`);
+    const taskDocSnapshot = await taskDocRef.get();
+
+    if(!taskDocSnapshot.exists){
+        const createdAt = new Date();
+        try{
+            await taskDocRef.set({createdAt, taskName,  taskLocation, taskDetails, taskDate})
+        }catch (e) {
+            console.log('Error creating task', e.message);
+        }
+    }
+    return taskDocRef;
+};
+
 export const getCurrentUser = ()=>{
     return new Promise((resolve, reject)=>{
         const unsubscribe = auth.onAuthStateChanged(userAuth=>{
@@ -54,5 +72,40 @@ export const getCurrentUser = ()=>{
         }, reject)
     })
 };
+
+export const convertTasks = (taskArray)=>{
+    const uniqueDates = [];
+
+
+    taskArray.map(task => {
+        if (!uniqueDates.includes(task.taskDate)){
+            uniqueDates.push(task.taskDate)
+        }
+        return uniqueDates;
+    });
+    const transformedTasks = uniqueDates.map(date=>{
+        const listOfTasks = taskArray.filter(task=>{
+            return task.taskDate === date;
+        });
+        return {
+            [date]:listOfTasks
+        }
+    });
+    return transformedTasks;
+};
+
+
+export const getTasks = async (collectionRef)=>{
+    const snapshot = await  collectionRef.get();
+    const tasks = snapshot.docs.map(task=>{
+        return task.data();
+    });
+    return convertTasks(tasks);
+};
+
+export const deleteTask = async (docRef)=>{
+    await docRef.delete();
+};
+
 
 export default firestore;
