@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 
 //import actions
 import {deleteTaskStart} from "../../redux/task/task.actions";
@@ -21,27 +21,28 @@ import {TaskItemContainer,
 
 
 const TaskItem = ({item})=>{
-    const {taskName,  taskLocation, taskDetails} =  item;
+    const {taskName,  taskLocation, taskDetails, taskColor} =  item;
     const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser);
 
     const deleteTask = ()=>{
         dispatch(deleteTaskStart({taskName,currentUser}))
     };
-
     return (
         <TaskItemContainer>
-            <TaskItemTitleContainer>
-                <TaskItemTitle>{taskName}</TaskItemTitle>
-            </TaskItemTitleContainer>
-            <TaskItemSubtitle>{taskDetails}</TaskItemSubtitle>
+            <Suspense fallback={<div>Loading...</div>}>
+                <TaskItemTitleContainer borderColor={taskColor}>
+                    <TaskItemTitle titleColor={taskColor}>{taskName}</TaskItemTitle>
+                </TaskItemTitleContainer>
+                <TaskItemSubtitle>{taskDetails}</TaskItemSubtitle>
 
-            <TaskItemLocationLogo/>
-            <TaskItemLocation>{taskLocation}</TaskItemLocation>
+                <TaskItemLocationLogo/>
+                <TaskItemLocation>{taskLocation}</TaskItemLocation>
 
-            <TaskItemClockLogo/>
-            <TaskItemTimeLeft>2 weeks and 40 days</TaskItemTimeLeft>
-            <TaskItemDeleteLogo onClick={deleteTask}/>
+                <TaskItemClockLogo/>
+                <TaskItemTimeLeft>2 weeks and 40 days</TaskItemTimeLeft>
+                <TaskItemDeleteLogo onClick={deleteTask}/>
+            </Suspense>
         </TaskItemContainer>
     )
 };

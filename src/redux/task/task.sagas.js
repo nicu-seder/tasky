@@ -12,7 +12,6 @@ import {fetchTasksSuccess, fetchTasksFailure} from "./task.actions";
 export function* fetchTasksAsync({payload}){
     const userId = payload.id;
     const collectionRef = firestore.collection(`tasks/${userId}/items`);
-    console.log(userId);
     try{
         const tasks = yield getTasks(collectionRef);
         yield put(fetchTasksSuccess(tasks));

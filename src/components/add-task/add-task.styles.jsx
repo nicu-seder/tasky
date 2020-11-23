@@ -7,6 +7,7 @@ export const AddTaskContainer = styled.div`
   justify-content: start;
   align-items: center;
   width: 100%;
+  margin-left: 15px;
 `;
 
 export const AddTaskButton = styled.div`

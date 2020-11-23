@@ -16,10 +16,10 @@ export const FormInputText = styled.input`
   border-bottom: #cccccc 1px solid;
   font-family: 'Open Sans Condensed', sans-serif;
   color: #333333;
-  font-size: 22px;
+  font-size: 18px;
 `;
 
 export const FormInputLabel = styled.label`
    font-family: 'Open Sans Condensed', sans-serif;
-   font-size: 12px;
+   font-size: 14px;
 `;

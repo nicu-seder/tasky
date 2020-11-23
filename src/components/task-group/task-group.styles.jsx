@@ -8,6 +8,7 @@ export const TaskGroupContainer = styled.div`
   //height: 100%;
   width: 100%;
   margin-bottom: 50px;
+  margin-right: 20px;
 `;
 
 export const TaskGroupInfoContainer = styled.div`

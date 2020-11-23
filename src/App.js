@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, lazy, Suspense} from 'react';
 
 //import routing
 import {Switch, Route,Redirect} from "react-router-dom";
 
 //import components
 import Header from "./components/header/header.component";
-import SigninPage from "./pages/signin/signin.component";
+
 import SignupPage from "./pages/signup/signup.component";
 import WelcomePage from "./pages/welcome/welcome.component";
 import TasksPage from "./pages/task-page/task-page.component";
@@ -19,6 +19,8 @@ import  {checkUserSession} from "./redux/user/user.actions";
 //import selectors
 import {selectCurrentUser} from "./redux/user/user.selectors";
 
+const SigninPage = lazy(()=> import("./pages/signin/signin.component")) ;
+
 const  App = ()=> {
     const  dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser);
@@ -30,6 +32,7 @@ const  App = ()=> {
   return (
     <div>
       <Header/>
+      <Suspense fallback={<div>Loading...........</div>}>
       <Switch>
           {
               currentUser?<Route path={'/task'} component={TasksPage}/>:
@@ -39,6 +42,7 @@ const  App = ()=> {
           <Route path={'/signup'} render={()=>currentUser?<Redirect to={'/task'}/>:<SignupPage/>}/>
 
       </Switch>
+      </Suspense>
     </div>
   );
 };

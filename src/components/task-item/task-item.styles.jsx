@@ -18,20 +18,22 @@ export const TaskItemContainer = styled.div`
 export  const TaskItemTitleContainer = styled.div`
   display: flex;
   justify-content: start;
-  border-left: 2px solid #4B3D84;
-  background-color: #f5f9ff;
+  //border-left: 2px solid #4B3D84;
+  //background-color: #f5f9ff;
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   align-items: center;
   align-content: center;
   margin-right: 15px;
   width: 100px;
+  border-left: ${props=>` 2px solid ${props.borderColor}`};
+  background-color: ${props=>`${props.borderColor}07`};
 `;
 
 export const TaskItemTitle = styled.div`
   font-size: 14px;
   text-align: start;
-  color: #4B3D84;
+  color: ${({titleColor})=>titleColor};
   font-family: 'Open Sans Condensed', sans-serif;
   margin: 5px 15px;
 `;
