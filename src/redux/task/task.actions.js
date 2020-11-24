@@ -42,3 +42,18 @@ export const deleteTaskFailure = (error)=>{
         payload:error
     }
 };
+
+//opening task creation window
+export const openTaskCreationWindow = (status)=>{
+    return {
+        type:TaskActionTypes.OPEN_TASK_CREATION_WINDOW,
+        payload:status
+    }
+};
+
+export const closeTaskCreationWindow = (status)=>{
+    return {
+        type:TaskActionTypes.CLOSE_TASK_CREATION_WINDOW,
+        payload:status
+    }
+};

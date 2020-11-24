@@ -9,16 +9,18 @@ export const TaskDateContainer = styled.div`
 
 export const TaskDateMonth = styled.div`
   display: flex;
-  color: grey;
+  color: ${({isToday})=>isToday?'#FDC027':'grey'};
   font-size: 18px;
   margin-left: 10px;
   font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
 `;
 
 export const TaskDateDay = styled.div`
   display: flex;
-  color: grey;
+  color: ${({isToday})=>isToday?'#FDC027':'grey'};
   font-size: 40px;
   font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
 `;
 

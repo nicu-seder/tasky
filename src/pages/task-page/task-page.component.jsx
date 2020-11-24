@@ -8,22 +8,24 @@ import {TaskPageContainer,
     TaskPageWelcomeCurrentDate,
     TaskPageWelcomeInformation,
     TaskPageWelcomeLogo,
-    TaskPageGroupContainer  } from "./task-page.styles";
+    TaskPageGroupContainer,
+    TaskPageColumnValues, TaskPageColumnName, TaskPageHeader} from "./task-page.styles";
 
 //import redux
 import {useDispatch, useSelector} from "react-redux";
 
 //import actions
-import {fetchTasksStart} from "../../redux/task/task.actions";
+import {fetchTasksStart, openTaskCreationWindow} from "../../redux/task/task.actions";
 
 //import selectors
 import {selectCurrentUser} from "../../redux/user/user.selectors";
-import {selectTaskItems, selectTaskIsFetching} from "../../redux/task/task.selectors";
+import {selectTaskItems, selectTaskIsFetching, selectTaskCreationWindowStatus} from "../../redux/task/task.selectors";
 
 //import components
 import TaskGroup from "../../components/task-group/task-group.component";
 import AddTask from "../../components/add-task/add-task.component";
 import Spinner from "../../components/spinner/spinner.component";
+import FabButton from "../../components/fab-button/fab-button.component";
 
 //import from firebase
 import {firestore} from "../../firebase/firebase.utils";
@@ -37,6 +39,8 @@ const TasksPage = ()=>{
     const currentUser = useSelector(selectCurrentUser);
     const isFetching = useSelector(selectTaskIsFetching);
     const tasks =  useSelector(selectTaskItems);
+    const taskCreationStatus = useSelector(selectTaskCreationWindowStatus);
+
     const dispatch = useDispatch();
     const currentDate  = moment(new Date()).format(  "LL").toString();
 
@@ -53,17 +57,35 @@ const TasksPage = ()=>{
 
     },[currentUser, dispatch]);
 
+    const openWindow = ()=>{
+        dispatch(openTaskCreationWindow(true));
+    };
+
+
     return (
         <TaskPageContainer>
-            <TaskPageWelcomeContainer>
-                <TaskPageWelcomeInformation>
-                    <TaskPageWelcomeTitle>{`Good to see you again, ${currentUser.displayName}`}</TaskPageWelcomeTitle>
-                    <TaskPageWelcomeSubtitle>{'Have a fruitful day ahead!'}</TaskPageWelcomeSubtitle>
-                    <TaskPageWelcomeCurrentDate>{currentDate}</TaskPageWelcomeCurrentDate>
-                </TaskPageWelcomeInformation>
-                <TaskPageWelcomeLogo/>
-            </TaskPageWelcomeContainer>
-            <AddTask/>
+            <TaskPageHeader>
+                <TaskPageWelcomeContainer>
+                    <TaskPageWelcomeInformation>
+                        <TaskPageWelcomeTitle>{`Good to see you again, ${currentUser.displayName}`}</TaskPageWelcomeTitle>
+                        <TaskPageWelcomeSubtitle>{'Have a fruitful day ahead!'}</TaskPageWelcomeSubtitle>
+                        <TaskPageWelcomeCurrentDate>{currentDate}</TaskPageWelcomeCurrentDate>
+                    </TaskPageWelcomeInformation>
+                    <TaskPageWelcomeLogo/>
+                </TaskPageWelcomeContainer>
+
+
+            </TaskPageHeader>
+            {
+                taskCreationStatus?<AddTask/>:null
+            }
+            <TaskPageColumnValues>
+                <TaskPageColumnName widthLength={50}>Date</TaskPageColumnName>
+                <TaskPageColumnName marginLeft={18} marginRight={15} widthLength={100}>Category</TaskPageColumnName>
+                <TaskPageColumnName widthLength={165} marginRight={15}>Details</TaskPageColumnName>
+                <TaskPageColumnName marginRight={10} widthLength={100}>Location</TaskPageColumnName>
+                <TaskPageColumnName marginLeft={18} widthLength={170}>Deadline</TaskPageColumnName>
+            </TaskPageColumnValues>
             <TaskPageGroupContainer>
                 {
                     isFetching?<Spinner/>:
@@ -72,7 +94,7 @@ const TasksPage = ()=>{
                         })
                 }
             </TaskPageGroupContainer>
-
+            <FabButton openTaskCreation={openWindow}/>
 
         </TaskPageContainer>
     )

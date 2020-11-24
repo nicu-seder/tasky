@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const monthMatching = {
     '01':'Jan',
     '02':'Feb',
@@ -36,4 +38,14 @@ export const checkDateValidity = (stringDate)=>{
     }
     return true;
 
+};
+
+export const checkIfToday = (stringDate)=>{
+    const  dateSplit = stringDate.split('-');
+    const month = dateSplit[1];
+    const day = dateSplit[0];
+    const year = dateSplit[2];
+    const now = moment(new Date()).format('DD-MM-YYYY');
+    const dt = moment(new Date(parseInt(year), parseInt(month)-1, parseInt(day))).format('DD-MM-YYYY');
+    return dt === now;
 };

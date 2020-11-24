@@ -11,3 +11,8 @@ export  const selectTaskIsFetching = createSelector(
     [selectTasks],
     tasksElements=>tasksElements.isFetching
 );
+
+export const selectTaskCreationWindowStatus = createSelector(
+    [selectTasks],
+    tasks=>tasks.taskCreationWindowStatus
+);

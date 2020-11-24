@@ -5,6 +5,11 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  //background-color: white;
+  //margin-bottom: 25px;
+  position: sticky;
+  top:0;
+  z-index: 5;
 `;
 
 export const HeaderDetails = styled.div`

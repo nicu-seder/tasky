@@ -41,6 +41,7 @@ const TaskItem = ({item})=>{
 
                 <TaskItemClockLogo/>
                 <TaskItemTimeLeft>2 weeks and 40 days</TaskItemTimeLeft>
+
                 <TaskItemDeleteLogo onClick={deleteTask}/>
             </Suspense>
         </TaskItemContainer>

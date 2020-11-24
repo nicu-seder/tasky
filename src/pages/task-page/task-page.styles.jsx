@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import {ReactComponent as Logo} from "../../assets/plant.svg";
+import {ReactComponent as Logo} from "../../assets/playing_cat.svg";
 
 export const TaskPageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width:90%;
+  width:100%;
   height: 100%;
   margin-top: 25px;
   //padding: 20px;
@@ -21,6 +21,10 @@ export const TaskPageWelcomeContainer = styled.div`
   border: 1px solid #f8f9ff;
   border-radius: 5px;
   padding: 15px;
+  width: 40%;
+  //position: sticky;
+  //top:0;
+  //width: 100%;
 `;
 
 export const TaskPageWelcomeInformation =  styled.div`
@@ -65,6 +69,33 @@ export const TaskPageGroupContainer = styled.div`
   //height: 100%;
   //overflow-y: scroll ;
   //overflow-x: hidden;
+`;
 
+export const TaskPageColumnValues = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+  background-color: white;
+  position: sticky;
+  top:0;
+`;
+
+export const TaskPageColumnName = styled.div`
+  font-family: 'Open Sans Condensed', sans-serif;
+  border-bottom: 1px solid #c4c4c4;
+  margin-left: ${({marginLeft})=>`${marginLeft}px`};
+  margin-right: ${({marginRight})=>`${marginRight}px`};
+  width: ${({widthLength})=>`${widthLength}px`};
+  color:#c4c4c4;
+`;
+
+export const TaskPageHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 `;
 

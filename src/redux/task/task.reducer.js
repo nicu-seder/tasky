@@ -3,7 +3,8 @@ import TaskActionTypes from "./task.types";
 const INITIAL_STATE = {
     tasks:null,
     isFetching:true,
-    errorMessage:undefined
+    errorMessage:undefined,
+    taskCreationWindowStatus:false
 };
 
 const taskReducer = (state=INITIAL_STATE, action)=>{
@@ -24,6 +25,16 @@ const taskReducer = (state=INITIAL_STATE, action)=>{
                 ...state,
                 errorMessage: action.payload,
                 isFetching: false
+            };
+        case TaskActionTypes.CLOSE_TASK_CREATION_WINDOW:
+            return {
+                ...state,
+                taskCreationWindowStatus: false
+            };
+        case TaskActionTypes.OPEN_TASK_CREATION_WINDOW:
+            return {
+                ...state,
+                taskCreationWindowStatus: true
             };
         default:
             return state;
