@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import {ReactComponent as  LocationLogo} from "../../assets/placeholder.svg";
-import {ReactComponent as  TimeLogo} from "../../assets/clock.svg";
+import {ReactComponent as  TimeLogo} from "../../assets/deadline.svg";
 import  {ReactComponent as DeleteLogo} from "../../assets/delete.svg";
+import {ReactComponent as ContactLogo} from "../../assets/user.svg";
+import {ReactComponent as HourLogo} from "../../assets/clock.svg";
 
 export const TaskItemContainer = styled.div`
   display: flex;
@@ -49,7 +51,30 @@ export const TaskItemSubtitle = styled.div`
   margin-right: 10px;
 `;
 
+export const TaskItemContact = styled.div`
+  color: grey;
+  font-size: 15px;
+  text-align: start;
+  height: 100%;
+  width: 170px;
+  padding: 3px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin-right: 10px;
+`;
+
+
 export const TaskItemLocation = styled.div`
+  color: grey;
+  font-size: 15px;
+  text-align: start;
+  height: 100%;
+  width: 150px;
+  padding: 3px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin-right: 10px;
+`;
+
+export const TaskItemHour = styled.div`
   color: grey;
   font-size: 15px;
   text-align: start;
@@ -77,6 +102,16 @@ export  const TaskItemLocationLogo = styled(LocationLogo)`
 `;
 
 export  const TaskItemClockLogo = styled(TimeLogo)`
+  width: 18px;
+  height: 18px;
+`;
+
+export  const TaskItemHourLogo = styled(HourLogo)`
+  width: 18px;
+  height: 18px;
+`;
+
+export  const TaskItemContactLogo = styled(ContactLogo)`
   width: 18px;
   height: 18px;
 `;

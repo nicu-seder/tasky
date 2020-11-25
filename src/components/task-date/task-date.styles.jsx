@@ -24,3 +24,12 @@ export const TaskDateDay = styled.div`
   font-weight: bold;
 `;
 
+export  const TaskDateToday = styled.div`
+  display: flex;
+  color: ${({isToday})=>isToday?'#FDC027':'grey'};
+  font-size: 15px;
+  margin-left: 10px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  //font-weight: bold;
+`;
+

@@ -49,14 +49,14 @@ export const createUserProfileDocument = async (userAuth, additionalData)=>{
 export const createTask = async (userAuth, taskInfo)=>{
     if(!userAuth)
         return;
-    const {taskName, taskDate, taskDetails, taskLocation, taskColor} = taskInfo;
+    const {taskName, taskDate, taskDetails, taskLocation, taskColor, taskHour, taskContactPerson} = taskInfo;
     const taskDocRef = firestore.doc(`tasks/${userAuth.id}/items/${taskName}`);
     const taskDocSnapshot = await taskDocRef.get();
 
     if(!taskDocSnapshot.exists){
         const createdAt = new Date();
         try{
-            await taskDocRef.set({createdAt, taskName,  taskLocation, taskDetails, taskDate, taskColor:taskColor})
+            await taskDocRef.set({createdAt, taskName,  taskLocation, taskHour, taskContactPerson, taskDetails, taskDate, taskColor:taskColor})
         }catch (e) {
             console.log('Error creating task', e.message);
         }

@@ -17,11 +17,16 @@ import {TaskItemContainer,
     TaskItemLocation,
     TaskItemTimeLeft,
     TaskItemLocationLogo,
-    TaskItemClockLogo, TaskItemDeleteLogo} from "./task-item.styles";
+    TaskItemClockLogo,
+    TaskItemDeleteLogo,
+    TaskItemContact,
+    TaskItemContactLogo,
+    TaskItemHourLogo,
+    TaskItemHour} from "./task-item.styles";
 
 
 const TaskItem = ({item})=>{
-    const {taskName,  taskLocation, taskDetails, taskColor} =  item;
+    const {taskName,  taskLocation, taskDetails, taskColor, taskHour, taskContactPerson} =  item;
     const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser);
 
@@ -34,10 +39,17 @@ const TaskItem = ({item})=>{
                 <TaskItemTitleContainer borderColor={taskColor}>
                     <TaskItemTitle titleColor={taskColor}>{taskName}</TaskItemTitle>
                 </TaskItemTitleContainer>
+
                 <TaskItemSubtitle>{taskDetails}</TaskItemSubtitle>
+
+                <TaskItemContactLogo/>
+                <TaskItemContact>{taskContactPerson}</TaskItemContact>
 
                 <TaskItemLocationLogo/>
                 <TaskItemLocation>{taskLocation}</TaskItemLocation>
+
+                <TaskItemHourLogo/>
+                <TaskItemHour>{taskHour}</TaskItemHour>
 
                 <TaskItemClockLogo/>
                 <TaskItemTimeLeft>2 weeks and 40 days</TaskItemTimeLeft>

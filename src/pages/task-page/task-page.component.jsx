@@ -73,17 +73,17 @@ const TasksPage = ()=>{
                     </TaskPageWelcomeInformation>
                     <TaskPageWelcomeLogo/>
                 </TaskPageWelcomeContainer>
-
-
             </TaskPageHeader>
             {
                 taskCreationStatus?<AddTask/>:null
             }
             <TaskPageColumnValues>
                 <TaskPageColumnName widthLength={50}>Date</TaskPageColumnName>
-                <TaskPageColumnName marginLeft={18} marginRight={15} widthLength={100}>Category</TaskPageColumnName>
-                <TaskPageColumnName widthLength={165} marginRight={15}>Details</TaskPageColumnName>
-                <TaskPageColumnName marginRight={10} widthLength={100}>Location</TaskPageColumnName>
+                <TaskPageColumnName marginLeft={22} marginRight={15} widthLength={100}>Title</TaskPageColumnName>
+                <TaskPageColumnName widthLength={165} marginRight={15}>To Do</TaskPageColumnName>
+                <TaskPageColumnName widthLength={165} marginRight={15}>Point of Contact</TaskPageColumnName>
+                <TaskPageColumnName marginLeft={20} marginRight={10} widthLength={100}>Location</TaskPageColumnName>
+                <TaskPageColumnName marginLeft={68} marginRight={10} widthLength={100}>Hour</TaskPageColumnName>
                 <TaskPageColumnName marginLeft={18} widthLength={170}>Deadline</TaskPageColumnName>
             </TaskPageColumnValues>
             <TaskPageGroupContainer>
