@@ -4,6 +4,9 @@ import {ReactComponent as  TimeLogo} from "../../assets/deadline.svg";
 import  {ReactComponent as DeleteLogo} from "../../assets/delete.svg";
 import {ReactComponent as ContactLogo} from "../../assets/user.svg";
 import {ReactComponent as HourLogo} from "../../assets/clock.svg";
+import {ReactComponent as ReminderLogo} from "../../assets/bell.svg";
+import {ReactComponent as CompletedLogo} from "../../assets/completed.svg";
+import {ReactComponent as UncompletedLogo} from "../../assets/uncompleted.svg";
 
 export const TaskItemContainer = styled.div`
   display: flex;
@@ -90,7 +93,7 @@ export const TaskItemTimeLeft = styled.div`
   font-size: 15px;
   text-align: start;
   height: 100%;
-  //width: 100%;
+  width: 140px;
   padding: 3px;
   font-family: 'Open Sans Condensed', sans-serif;
   margin-right: 10px;
@@ -122,5 +125,29 @@ export const TaskItemDeleteLogo = styled(DeleteLogo)`
   cursor: pointer;
   margin-left: 20px;
 `;
+
+export const TaskItemReminderLogo = styled(ReminderLogo)`
+  width: 18px;
+  height: 18px;
+  //cursor: pointer;
+  //margin-left: 20px;
+`;
+
+export const TaskItemCompletedLogo = styled(CompletedLogo)`
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 10px;
+`;
+export const TaskItemUncompletedLogo = styled(UncompletedLogo)`
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 10px;
+`;
+
+
 
 

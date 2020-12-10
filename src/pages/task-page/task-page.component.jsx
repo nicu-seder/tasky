@@ -9,7 +9,9 @@ import {TaskPageContainer,
     TaskPageWelcomeInformation,
     TaskPageWelcomeLogo,
     TaskPageGroupContainer,
-    TaskPageColumnValues, TaskPageColumnName, TaskPageHeader} from "./task-page.styles";
+    TaskPageColumnValues,
+    TaskPageColumnName,
+    TaskPageHeader} from "./task-page.styles";
 
 //import redux
 import {useDispatch, useSelector} from "react-redux";
@@ -84,7 +86,7 @@ const TasksPage = ()=>{
                 <TaskPageColumnName widthLength={165} marginRight={15}>Point of Contact</TaskPageColumnName>
                 <TaskPageColumnName marginLeft={20} marginRight={10} widthLength={100}>Location</TaskPageColumnName>
                 <TaskPageColumnName marginLeft={68} marginRight={10} widthLength={100}>Hour</TaskPageColumnName>
-                <TaskPageColumnName marginLeft={18} widthLength={170}>Deadline</TaskPageColumnName>
+                <TaskPageColumnName marginLeft={18} widthLength={145}>Deadline</TaskPageColumnName>
             </TaskPageColumnValues>
             <TaskPageGroupContainer>
                 {

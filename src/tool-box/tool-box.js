@@ -49,3 +49,27 @@ export const checkIfToday = (stringDate)=>{
     const dt = moment(new Date(parseInt(year), parseInt(month)-1, parseInt(day))).format('DD-MM-YYYY');
     return dt === now;
 };
+
+export const getDateDifference = (stringDate)=>{
+    const  dateSplit = stringDate.split('-');
+    const month = dateSplit[1];
+    const day = dateSplit[0];
+    const year = dateSplit[2];
+    const now = moment(new Date());
+    const dt = moment(new Date(parseInt(year), parseInt(month)-1, parseInt(day)));
+    const dateDifference = dt.diff(now, 'days');
+    return dateDifference;
+};
+
+export const getUrgentTasks = (tasks)=>{
+    let counter = 0;
+    tasks.map(task=>{
+        const taskArray = Object.values(task)[0];
+        taskArray.map(element=>{
+            if(checkIfToday(element['taskDate'])){
+                counter = counter +1;
+            }
+        })
+    });
+    return counter;
+};

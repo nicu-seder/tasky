@@ -56,7 +56,7 @@ export const createTask = async (userAuth, taskInfo)=>{
     if(!taskDocSnapshot.exists){
         const createdAt = new Date();
         try{
-            await taskDocRef.set({createdAt, taskName,  taskLocation, taskHour, taskContactPerson, taskDetails, taskDate, taskColor:taskColor})
+            await taskDocRef.set({createdAt, taskName,  taskLocation, taskHour, taskContactPerson, taskDetails, taskDate, taskColor:taskColor, taskCompleted:false})
         }catch (e) {
             console.log('Error creating task', e.message);
         }
@@ -91,6 +91,7 @@ export const convertTasks = (taskArray)=>{
             [date]:listOfTasks
         }
     });
+    // console.log(transformedTasks);
     return transformedTasks;
 };
 
@@ -105,6 +106,12 @@ export const getTasks = async (collectionRef)=>{
 
 export const deleteTask = async (docRef)=>{
     await docRef.delete();
+};
+
+export const completeTask = async (user, taskName)=>{
+    const {id} = user;
+    const taskReference = firestore.doc(`tasks/${id}/items/${taskName}`);
+    await taskReference.update({taskCompleted:true})
 };
 
 

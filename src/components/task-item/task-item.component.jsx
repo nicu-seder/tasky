@@ -22,23 +22,34 @@ import {TaskItemContainer,
     TaskItemContact,
     TaskItemContactLogo,
     TaskItemHourLogo,
-    TaskItemHour} from "./task-item.styles";
+    TaskItemHour,
+    TaskItemReminderLogo, TaskItemCompletedLogo, TaskItemUncompletedLogo} from "./task-item.styles";
+
+//import from toolbox
+import {getDateDifference,  checkIfToday} from "../../tool-box/tool-box";
+
+//import from firebase
+import {completeTask} from "../../firebase/firebase.utils";
 
 
 const TaskItem = ({item})=>{
-    const {taskName,  taskLocation, taskDetails, taskColor, taskHour, taskContactPerson} =  item;
+    const {taskName,  taskLocation, taskDetails, taskColor, taskHour, taskContactPerson, taskDate, taskCompleted} =  item;
     const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser);
 
     const deleteTask = ()=>{
         dispatch(deleteTaskStart({taskName,currentUser}))
     };
+
     return (
         <TaskItemContainer>
             <Suspense fallback={<div>Loading...</div>}>
+
+
                 <TaskItemTitleContainer borderColor={taskColor}>
                     <TaskItemTitle titleColor={taskColor}>{taskName}</TaskItemTitle>
                 </TaskItemTitleContainer>
+
 
                 <TaskItemSubtitle>{taskDetails}</TaskItemSubtitle>
 
@@ -52,9 +63,16 @@ const TaskItem = ({item})=>{
                 <TaskItemHour>{taskHour}</TaskItemHour>
 
                 <TaskItemClockLogo/>
-                <TaskItemTimeLeft>2 weeks and 40 days</TaskItemTimeLeft>
+                <TaskItemTimeLeft>{getDateDifference(taskDate) === 0?'Today':`${getDateDifference(taskDate)} days left until deadline`}</TaskItemTimeLeft>
+                {
+                    taskCompleted?<TaskItemCompletedLogo/>:<TaskItemUncompletedLogo onClick={()=>completeTask(currentUser, taskName)}/>
+                }
 
+                {
+                    checkIfToday(taskDate)?<TaskItemReminderLogo/>:null
+                }
                 <TaskItemDeleteLogo onClick={deleteTask}/>
+
             </Suspense>
         </TaskItemContainer>
     )

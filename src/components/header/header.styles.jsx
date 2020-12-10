@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {ReactComponent as Logo} from "../../assets/tasky_logo.svg";
+import {ReactComponent as ReminderLogo, ReactComponent as BellLogo} from "../../assets/bell.svg";
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -78,6 +79,35 @@ export const HeaderSignout = styled.div`
   background-color: #4B3D84;
   text-align: center;
   border-radius: 15px;
+`;
+
+export const HeaderTasksCounter = styled.div`
+  //display: flex;
+  border: 2px solid #EC0016;
+  border-radius: 1000px;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  font-size: 20px;
+  color:#EC0016;
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+`;
+
+export const HeaderBellLogo = styled(BellLogo)`
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  //cursor: pointer;
+  //margin-left: 20px;
+`;
+
+export const HeaderTasksReminder =  styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 
 
