@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {ReactComponent as Logo} from "../../assets/tasky_logo.svg";
-import {ReactComponent as ReminderLogo, ReactComponent as BellLogo} from "../../assets/bell.svg";
+import {ReactComponent as BellLogo} from "../../assets/bell.svg";
 
 export const HeaderContainer = styled.div`
   display: flex;
